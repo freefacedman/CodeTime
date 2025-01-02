@@ -1,0 +1,131 @@
+/* CSS for Digital Clock with Alarms */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7ede2; /* Light beige */
+}
+
+.clock {
+    width: 100vw;
+    height: 120px; /* Adjust height as needed */
+    border: 10px solid #5c3c1f; /* Brown */
+    background-color: #8b5a2b; /* Wood color */
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3); /* Wood texture */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#digital-clock {
+    color: #e4d1ad; /* Light wood color */
+    font-size: 72px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+.timezones {
+    margin-top: 20px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    color: #5c3c1f; /* Brown */
+}
+
+select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #5c3c1f; /* Brown */
+    background-color: #f7ede2; /* Light beige */
+    color: #5c3c1f; /* Brown */
+}
+
+.alarm {
+    margin-top: 20px;
+    text-align: center;
+}
+
+input[type="time"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #5c3c1f; /* Brown */
+    background-color: #f7ede2; /* Light beige */
+    color: #5c3c1f; /* Brown */
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #5c3c1f; /* Brown */
+    color: #f7ede2; /* Light beige */
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+}
+
+button:hover {
+    background-color: #794f2e; /* Darker brown on hover */
+}
+
+button.remove-button {
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 3px;
+    border: none;
+    background-color: #5c3c1f; /* Brown */
+    color: #f7ede2; /* Light beige */
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px; /* Adjust font size as needed */
+}
+
+button.remove-button:hover {
+    background-color: #794f2e; /* Darker brown on hover */
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.clock.animate-slide {
+    animation: slideIn 1s ease-in-out;
+}
+
+.clock.animate-rotate {
+    animation: rotate 1s linear infinite;
+}
+
+.clock.animate-fade {
+    animation: fadeInOut 2s ease-in-out;
+}
