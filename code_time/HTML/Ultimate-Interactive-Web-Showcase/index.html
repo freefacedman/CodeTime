@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Interactive Web Showcase</title>
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js/2.0.0/particles.min.js" defer></script>
+    <!-- Link to Separate CSS Files -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <!-- Link to Separate JS Files -->
+    <script src="js/scripts.js" defer></script>
+    <script src="js/qrGenerator.js" defer></script>
+    <script src="js/chart.js" defer></script>
+    <script src="js/quizGame.js" defer></script>
+    <script src="js/contactForm.js" defer></script>
+    <script src="js/videoControls.js" defer></script>
+    <script src="js/dragDrop.js" defer></script>
+    <script src="js/gallery.js" defer></script>
+    <script src="js/map.js" defer></script>
+    <script src="js/modals.js" defer></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Web Showcase</div>
+        <span class="menu-icon" onclick="toggleMenu()"></span>
+        <ul class="nav-links">
+            <li><a href="#" onclick="openTab(event, 'QR')">QR Generator</a></li>
+            <li><a href="#" onclick="openTab(event, 'Chart')">Chart</a></li>
+            <li><a href="#" onclick="openTab(event, 'Game')">Quiz Game</a></li>
+            <li><a href="#" onclick="openTab(event, 'Contact')">Contact</a></li>
+            <li><a href="#" onclick="openTab(event, 'Video')">Video</a></li>
+            <li><a href="#" onclick="openTab(event, 'Drag')">Drag & Drop</a></li>
+            <li><a href="#" onclick="openTab(event, 'Gallery')">Gallery</a></li>
+            <li><a href="#" onclick="openTab(event, 'Map')">Map</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode"> Dark Mode</button>
+
+    <!-- Theme Selector -->
+    <select id="theme-selector" onchange="changeTheme(this.value)" aria-label="Select Theme">
+        <option value="default">Default</option>
+        <option value="forest">Forest</option>
+        <option value="ocean">Ocean</option>
+        <option value="sunset">Sunset</option>
+    </select>
+
+    <!-- Feedback Trigger Button -->
+    <button class="feedback-trigger" onclick="openFeedbackModal()" aria-label="Open Feedback Modal">Give Feedback</button>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <button class="tablinks active" onclick="openTab(event, 'QR')">QR Generator</button>
+        <button class="tablinks" onclick="openTab(event, 'Chart')">Chart</button>
+        <button class="tablinks" onclick="openTab(event, 'Game')">Quiz Game</button>
+        <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
+        <button class="tablinks" onclick="openTab(event, 'Video')">Video</button>
+        <button class="tablinks" onclick="openTab(event, 'Drag')">Drag & Drop</button>
+        <button class="tablinks" onclick="openTab(event, 'Gallery')">Gallery</button>
+        <button class="tablinks" onclick="openTab(event, 'Map')">Map</button>
+    </div>
+
+    <!-- Placeholder for Tab Contents -->
+    <!-- Content will be populated in Part 2 -->
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+        <!-- QR Code Generator Tab -->
+        <div id='QR' class='tab-content active'>
+            <section class='qr-section'>
+                <h2>QR Code Generator</h2>
+                <div class='input-group'>
+                    <input type='url' id='link' placeholder='Enter a valid URL here' aria-label='Enter URL for QR Code' required />
+                    <select id='qr-color' aria-label='Select QR Code Color'>
+                        <option value='#000000'>Black</option>
+                        <option value='#FF0000'>Red</option>
+                        <option value='#0000FF'>Blue</option>
+                        <option value='#008000'>Green</option>
+                        <option value='#FFA500'>Orange</option>
+                        <option value='#800080'>Purple</option>
+                        <option value='#FFC0CB'>Pink</option>
+                    </select>
+                    <select id='qr-size' aria-label='Select QR Code Size'>
+                        <option value='150'>Small</option>
+                        <option value='200' selected>Medium</option>
+                        <option value='250'>Large</option>
+                        <option value='300'>Extra Large</option>
+                    </select>
+                    <select id='qr-error' aria-label='Select Error Correction Level'>
+                        <option value='L'>Low (7%)</option>
+                        <option value='M' selected>Medium (15%)</option>
+                        <option value='Q'>Quartile (25%)</option>
+                        <option value='H'>High (30%)</option>
+                    </select>
+                    <button onclick='generateQRCode()'>Generate QR Code</button>
+                </div>
+                <canvas id='qr-code' tabindex='0' aria-label='Generated QR Code'></canvas>
+            </section>
+        </div>
+
+        <!-- Chart Tab -->
+        <div id='Chart' class='tab-content'>
+            <section class='chart-section'>
+                <h2>Interactive Chart</h2>
+                <div class='chart-container'>
+                    <canvas id='myChart'></canvas>
+                </div>
+            </section>
+        </div>
+
+        <!-- Quiz Game Tab -->
+        <div id='Game' class='tab-content'>
+            <section class='game-section'>
+                <h2>Quiz Game</h2>
+                <div class='quiz-container'>
+                    <div class='progress-container'>
+                        <div class='progress-bar' id='quizProgressBar'></div>
+                    </div>
+                    <div id='quiz-question' class='quiz-question'>Question will appear here</div>
+                    <div id='quiz-options' class='quiz-options'></div>
+                    <div id='quiz-result' class='quiz-result'></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Form Tab -->
+        <div id='Contact' class='tab-content'>
+            <section class='contact-section'>
+                <h2>Contact Us</h2>
+                <form class='contact-form' id='contactForm'>
+                    <input type='text' id='name' placeholder='Your Name' aria-label='Your Name' required />
+                    <input type='email' id='email' placeholder='Your Email' aria-label='Your Email' required />
+                    <textarea id='message' placeholder='Your Message' aria-label='Your Message' rows='4' required></textarea>
+                    <button type='submit'>Send Message</button>
+                </form>
+            </section>
+        </div>
+
+        <!-- Video Tab -->
+        <div id='Video' class='tab-content'>
+            <section class='video-section'>
+                <h2>Embedded Video</h2>
+                <video id='myVideo' controls>
+                    <source src='https://www.w3schools.com/html/mov_bbb.mp4' type='video/mp4'>
+                    Your browser does not support HTML5 video.
+                </video>
+                <div class='video-controls'>
+                    <button onclick='playVideo()'>Play</button>
+                    <button onclick='pauseVideo()'>Pause</button>
+                    <button onclick='stopVideo()'>Stop</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Drag and Drop Tab -->
+        <div id='Drag' class='tab-content'>
+            <section class='drag-section'>
+                <h2>Explore Medical Benefits</h2>
+                <p>Drag the items into the drop zone below to learn about their medical benefits:</p>
+                <div class='drag-container'>
+                    <div class='draggable' draggable='true' id='reishi' data-type='reishi'>
+                        <img src='images/gallery/reishi.jpg' alt='Reishi Mushroom' />
+                        <span>Reishi</span>
+                    </div>
+                    <div class='draggable' draggable='true' id='lions-mane' data-type='lions-mane'>
+                        <img src='images/gallery/lions-mane.jpg' alt='Lion\'s Mane Mushroom' />
+                        <span>Lion's Mane</span>
+                    </div>
+                    <div class='draggable' draggable='true' id='creatine' data-type='creatine'>
+                        <img src='images/gallery/creatine.jpg' alt='Creatine Supplement' />
+                        <span>Creatine</span>
+                    </div>
+                </div>
+                <div class='dropzone' id='dropzone'>
+                    <p>Drop here</p>
+                </div>
+                <div class='benefits-info' id='benefits-info'></div>
+                <button onclick='resetDropzone()' class='reset-button'>Reset</button>
+            </section>
+        </div>
+
+        <!-- Gallery Tab -->
+        <div id='Gallery' class='tab-content'>
+            <section class='gallery-section'>
+                <h2>Image Gallery</h2>
+                <div class='gallery-container'>
+                    <div class='lightbox-gallery'>
+                        <img data-src='images/gallery/image1.jpg' alt='Gallery Image 1' class='gallery-img' onclick='openLightbox(this.dataset.src, this.alt)'>
+                        <img data-src='images/gallery/image2.jpg' alt='Gallery Image 2' class='gallery-img' onclick='openLightbox(this.dataset.src, this.alt)'>
+                        <img data-src='images/gallery/image3.jpg' alt='Gallery Image 3' class='gallery-img' onclick='openLightbox(this.dataset.src, this.alt)'>
+                        <img data-src='images/gallery/image4.jpg' alt='Gallery Image 4' class='gallery-img' onclick='openLightbox(this.dataset.src, this.alt)'>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Map Tab -->
+        <div id='Map' class='tab-content'>
+            <section class='map-section'>
+                <h2>Interactive Map</h2>
+                <div id='map-container'>
+                    <iframe
+                        src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0195975002253!2d-122.41941508468143!3d37.77492977975898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085818c0d4f5e0f%3A0x6d91e15a5f3a8d3!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1618385837698!5m2!1sen!2sus'
+                        width='100%' height='450' style='border:0;' allowfullscreen='' loading='lazy'></iframe>
+                </div>
+            </section>
+        </div>
+
+        <!-- Modals -->
+
+        <!-- QR Code Modal -->
+        <div id='qr-modal' class='modal' aria-hidden='true'>
+            <div class='modal-content'>
+                <span class='close' onclick='closeModal()' aria-label='Close Modal'>&times;</span>
+                <h2>Your QR Code</h2>
+                <canvas id='qr-code-modal' tabindex='0' aria-label='Generated QR Code Large'></canvas>
+                <p>Click outside the modal or press the close button to exit.</p>
+            </div>
+        </div>
+
+        <!-- Lightbox Modal for Gallery -->
+        <div id='lightbox-modal' class='modal' aria-hidden='true'>
+            <div class='modal-content'>
+                <span class='close' onclick='closeLightbox()' aria-label='Close Lightbox'>&times;</span>
+                <img id='lightbox-img' src='' alt='Lightbox Image'>
+                <p id='lightbox-caption'></p>
+            </div>
+        </div>
+
+        <!-- Info Modal -->
+        <div id='info-modal' class='modal' aria-hidden='true'>
+            <div class='modal-content'>
+                <span class='close' onclick='closeInfoModal()' aria-label='Close Info Modal'>&times;</span>
+                <h2>More Information</h2>
+                <p>This modal can be used to display additional information without navigating away from the current page.</p>
+            </div>
+        </div>
+
+        <!-- Feedback Modal -->
+        <div id='feedback-modal' class='modal' aria-hidden='true'>
+            <div class='modal-content'>
+                <span class='close' onclick='closeFeedbackModal()' aria-label='Close Feedback Modal'>&times;</span>
+                <h2>Feedback</h2>
+                <form id='feedbackForm'>
+                    <input type='text' id='feedback-name' placeholder='Your Name' aria-label='Your Name' required />
+                    <input type='email' id='feedback-email' placeholder='Your Email' aria-label='Your Email' required />
+                    <textarea id='feedback-message' placeholder='Your Feedback' aria-label='Your Feedback' rows='4' required></textarea>
+                    <button type='submit'>Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class='progress-container'>
+            <div class='progress-bar' id='myProgress'></div>
+        </div>
+
+        <!-- Particle Background -->
+        <div id='particles-js'></div>
+</body>
+</html>
+

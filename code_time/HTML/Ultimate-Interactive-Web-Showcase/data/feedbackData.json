@@ -1,0 +1,12 @@
+﻿[
+    {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "message": "Great website! Very interactive and user-friendly."
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "message": "Loved the QR Code generator and the quiz game. Keep it up!"
+    }
+]

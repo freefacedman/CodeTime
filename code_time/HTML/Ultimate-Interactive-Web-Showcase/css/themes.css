@@ -1,0 +1,28 @@
+﻿/* themes.css */
+
+/* Dark Mode and Themes */
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+}
+
+body.forest-theme {
+    --primary-color: #2E8B57;
+    --secondary-color: #3CB371;
+    --background-color: #e0ffe0;
+    --text-color: #004d40;
+}
+
+body.ocean-theme {
+    --primary-color: #1E90FF;
+    --secondary-color: #00BFFF;
+    --background-color: #e0f7ff;
+    --text-color: #005f73;
+}
+
+body.sunset-theme {
+    --primary-color: #FF4500;
+    --secondary-color: #FF6347;
+    --background-color: #ffe4e1;
+    --text-color: #8B0000;
+}
