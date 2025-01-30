@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock with Alarms</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* New CSS for color scheme change buttons */
+        .color-scheme-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .color-scheme-buttons button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #5c3c1f; /* Brown */
+            color: #f7ede2; /* Light beige */
+            cursor: pointer;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+
+        .color-scheme-buttons button:hover {
+            background-color: #794f2e; /* Darker brown on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="clock" id="clock">
+        <div id="digital-clock"></div>
+    </div>
+    <div class="timezones">
+        <label for="timezone">Select Time Zone:</label>
+        <select id="timezone" onchange="changeTimeZone(this.value)">
+            <option value="America/New_York">Eastern Standard Time</option>
+            <option value="Europe/London">GMT</option>
+            <option value="Asia/Tokyo">Japan Standard Time</option>
+            <!-- Add more time zones as needed -->
+        </select>
+    </div>
+    <div class="alarm">
+        <label for="alarm-time">Set Alarm:</label>
+        <input type="time" id="alarm-time">
+        <button onclick="setAlarm()">Set</button>
+    </div>
+    <div class="sound">
+        <label for="alarm-sound">Select Sound:</label>
+        <select id="alarm-sound">
+            <option value="mp3/ROOSTER TYPR BEAT.mp3">Sound 1</option>
+            <option value="mp3/YOUR NEW MORNING ALARM.mp3">Sound 2</option>
+            <option value="alarm3.mp3">Sound 3</option>
+            <!-- Add more sound options as needed -->
+        </select>
+    </div>
+    <div class="animations">
+        <label for="alarm-animation">Select Animation:</label>
+        <select id="alarm-animation">
+            <option value="animate-slide">Slide In</option>
+            <option value="animate-rotate">Rotate</option>
+            <option value="animate-fade">Fade In/Out</option>
+            <!-- Add more animation options as needed -->
+        </select>
+    </div>
+    <div class="alarms">
+        <h3>Alarms:</h3>
+        <ul id="alarm-list"></ul>
+    </div>
+    <!-- Color scheme change buttons -->
+    <div class="color-scheme-buttons">
+        <button onclick="changeColorScheme('cyberpunk')">Cyberpunk</button>
+        <button onclick="changeColorScheme('matrix')">Matrix</button>
+        <button onclick="changeColorScheme('classic')">Classic</button>
+        <button onclick="changeColorScheme('cozy')">Cozy</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
